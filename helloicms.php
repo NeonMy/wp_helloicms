@@ -27,11 +27,18 @@ function inHelloicmsSub() {
             'plugin-helloicms-admin', 'Внутренний пункт Helloicms', 'Helloicms подменю', 'manage_options', 'plugin-helloicms-sub', 'helloicmsMenu');
 }
 
+function encode($string) {
+    if (!$string) {
+        return false;
+    }
+    return htmlspecialchars($string, ENT_QUOTES, 'utf-8');
+}
+
 function helloicmsMenu() {
     $input = [
-        'helloicms_c_box' => get_option('helloicms_c_box'),
-        'helloicms_s_ct' => get_option('helloicms_s_ct'),
-        'helloicms_i_ut' => get_option('helloicms_i_ut')
+        'helloicms_c_box' => encode(get_option('helloicms_c_box')),
+        'helloicms_s_ct' => encode(get_option('helloicms_s_ct')),
+        'helloicms_i_ut' => encode(get_option('helloicms_i_ut'))
     ];
 
     if (isset($_POST['helloicms'])) {
@@ -48,7 +55,7 @@ function helloicmsMenu() {
 
                 delete_option($k);
             }
-            $input[$k] = get_option($k);
+            $input[$k] = encode(get_option($k));
         }
     }
     ?>
