@@ -24,7 +24,7 @@ function inHelloicms() {
 
 function inHelloicmsSub() {
     add_submenu_page(
-            'plugin-helloicms-admin', 'Внутренний пункт Helloicms', 'Helloicms подменю', 'manage_options', 'plugin-helloicms-sub', 'helloicmsMenu');
+            'plugin-helloicms-admin', 'Внутренний пункт Helloicms', 'Helloicms подменю', 'manage_options', 'plugin-helloicms-sub', 'helloicmsMenuSub');
 }
 
 function encode($string) {
@@ -76,6 +76,96 @@ function helloicmsMenu() {
     </form>
     <?php
 }
+// BETA
+function helloicmsMenuSub () {
+    
+    if ($_POST) {
+    var_dump($_POST);exit;
+        
+    }
+    ?>
+	<form  method='post'>
+
+		<h2>Апи settings</h2>
+
+		<?php
+		do_settings_sections( 'pluginPage' );
+		submit_button();
+		?>
+
+	</form>
+	<?php
+}
+
+
+// BETA
+add_action( 'admin_init', 'sub_settings_init' );
+function sub_settings_init(  ) { 
+
+	register_setting( 'pluginPage', 'plugin-helloicms-sub_settings' );
+
+    
+	add_settings_section(
+		'helloicmssub_pluginPage', 
+		'Секция настроек', 
+        '', 
+		'pluginPage'
+	);
+    
+//    $input = [
+//        'helloicms_c_box' => encode(get_option('helloicms_c_box')),
+//        'helloicms_s_ct' => encode(get_option('helloicms_s_ct')),
+//        'helloicms_i_ut' => encode(get_option('helloicms_i_ut'))
+//    ];
+
+//    foreach ($input as $k => $inp) {
+        
+        add_settings_field( 
+            'sub_select_field', 
+            'Выпадайка', 
+            'helloicms_c_box', 
+            'pluginPage', 
+            'helloicmssub_pluginPage' 
+//            [$k , $inp]
+        );      
+        
+        add_settings_field( 
+            'sub_select_field', 
+            'Текст', 
+            'helloicms_s_ct', 
+            'pluginPage', 
+            'helloicmssub_pluginPage' 
+//            [$k , $inp]
+        );        
+        
+//    }
+
+
+}
+
+function helloicms_c_box($arg) { 
+    
+
+	?>
+	<select name=''>
+        <option value='1' >Option 1</option>
+		<option value='2' >Option 2</option>
+	</select>
+
+<?php
+
+}
+
+function helloicms_s_ct($arg) { 
+    
+
+	?>
+    <input type="text">
+
+<?php
+
+}
+
 
 /**
  * На будущее
