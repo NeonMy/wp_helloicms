@@ -1,192 +1,45 @@
 <?php
-/**
- * Plugin Name: Hello Imagecms
- * Plugin URI: http://premmerce.com
- * Description: Первый модуль для ознакомления
- * Version: 1.0
- * Author: dev
- * Author URI: http://premmerce.com
- * License:      GPL-2.0+
- * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:  domain-name
- * Domain Path:  /languages
- */
-if (!defined('WPINC')) {
-    die;
-}
 
-add_action('admin_menu', 'inHelloicms');
-add_action('admin_menu', 'inHelloicmsSub');
-
-function inHelloicms() {
-    add_menu_page('Первый ознакомительный плагин Helloicms', 'Helloicms', 'manage_options', 'plugin-helloicms-admin', 'helloicmsMenu', 'dashicons-welcome-learn-more');
-}
-
-function inHelloicmsSub() {
-    add_submenu_page(
-            'plugin-helloicms-admin', 'Внутренний пункт Helloicms', 'Helloicms подменю', 'manage_options', 'plugin-helloicms-sub', 'helloicmsMenuSub');
-}
-
-function encode($string) {
-    if (!$string) {
-        return false;
-    }
-    return htmlspecialchars($string, ENT_QUOTES, 'utf-8');
-}
-
-function helloicmsMenu() {
-    $input = [
-        'helloicms_c_box' => encode(get_option('helloicms_c_box')),
-        'helloicms_s_ct' => encode(get_option('helloicms_s_ct')),
-        'helloicms_i_ut' => encode(get_option('helloicms_i_ut'))
-    ];
-
-    if (isset($_POST['helloicms'])) {
-
-        foreach ($input as $k => $v) {
-
-            if (isset($v) && isset($_POST['helloicms'][$k])) {
-
-                update_option($k, trim($_POST['helloicms'][$k]));
-            } elseif (!isset($v) && isset($_POST['helloicms'][$k])) {
-
-                add_option($k, trim($_POST['helloicms'][$k]));
-            } else {
-
-                delete_option($k);
-            }
-            $input[$k] = encode(get_option($k));
-        }
-    }
-    ?>
-    <h2>Настройки</h2>
-    <form method="POST">
-
-        <input <?php if ($input['helloicms_c_box']): ?> checked="checked" <?php endif; ?> type="checkbox" value="1" name="helloicms[helloicms_c_box]"> : Чекбокс <br>
-
-        <select name="helloicms[helloicms_s_ct]">
-            <option selected="selected" value="0">Не выбрано</option>                
-            <option <?php if ($input['helloicms_s_ct'] == 1): ?> selected="selected" <?php endif; ?> value="1">Выбор 1</option>
-            <option <?php if ($input['helloicms_s_ct'] == 2): ?> selected="selected" <?php endif; ?> value="2">Выбор 2</option>
-        </select>
-        <br>
-        <input type="text" name="helloicms[helloicms_i_ut]" value="<?php echo $input['helloicms_i_ut']; ?>"> <br>
-
-        <input type="submit">
-    </form>
-    <?php
-}
-// BETA
-function helloicmsMenuSub () {
-    
-    if ($_POST) {
-    var_dump($_POST);exit;
-        
-    }
-    ?>
-	<form  method='post'>
-
-		<h2>Апи settings</h2>
-
-		<?php
-		do_settings_sections( 'pluginPage' );
-		submit_button();
-		?>
-
-	</form>
-	<?php
-}
-
-
-// BETA
-add_action( 'admin_init', 'sub_settings_init' );
-function sub_settings_init(  ) { 
-
-	register_setting( 'pluginPage', 'plugin-helloicms-sub_settings' );
-
-    
-	add_settings_section(
-		'helloicmssub_pluginPage', 
-		'Секция настроек', 
-        '', 
-		'pluginPage'
-	);
-    
-//    $input = [
-//        'helloicms_c_box' => encode(get_option('helloicms_c_box')),
-//        'helloicms_s_ct' => encode(get_option('helloicms_s_ct')),
-//        'helloicms_i_ut' => encode(get_option('helloicms_i_ut'))
-//    ];
-
-//    foreach ($input as $k => $inp) {
-        
-        add_settings_field( 
-            'sub_select_field', 
-            'Выпадайка', 
-            'helloicms_c_box', 
-            'pluginPage', 
-            'helloicmssub_pluginPage' 
-//            [$k , $inp]
-        );      
-        
-        add_settings_field( 
-            'sub_select_field', 
-            'Текст', 
-            'helloicms_s_ct', 
-            'pluginPage', 
-            'helloicmssub_pluginPage' 
-//            [$k , $inp]
-        );        
-        
-//    }
-
-
-}
-
-function helloicms_c_box($arg) { 
-    
-
-	?>
-	<select name=''>
-        <option value='1' >Option 1</option>
-		<option value='2' >Option 2</option>
-	</select>
-
-<?php
-
-}
-
-function helloicms_s_ct($arg) { 
-    
-
-	?>
-    <input type="text">
-
-<?php
-
-}
-
+use helloicms\helloicmsPlugin;
+use helloicms\FileManager;
 
 /**
- * На будущее
-    global $wpdb;
-    if (!class_exists('wpdb')) {
-        include_once $_SERVER['DOCUMENT_ROOT'] . '/wp-includes/wp-db.php';
-    }
-    if (!$wpdb) {
-        $wpdb = new wpdb(DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
-    }
-    register_activation_hook(__FILE__, function() use($wpdb) {
-        $wpdb->query("CREATE TABLE IF NOT EXISTS `wp_helloicms` ( "
-                . "    `id` int(11) NOT NULL AUTO_INCREMENT, "
-                . "    `name` varchar(255) CHARACTER SET utf8 NOT NULL, "
-                . "    `settings` text CHARACTER SET utf8 NOT NULL, "
-                . "    PRIMARY KEY (`id`) "
-                . "  ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;");
-    });
-
-    register_deactivation_hook(__FILE__, function() use($wpdb) {
-        $wpdb->query("DROP TABLE wp_helloicms");
-    });
- * 
+ * First Plugin plugin
+ *
+ *
+ * @link              http://premmerce.com
+ * @since             1.0.0
+ * @package           helloicms
+ *
+ * @wordpress-plugin
+ * Plugin Name:       First Plugin
+ * Plugin URI:        http://premmerce.com
+ * Description:       Icms plugin description
+ * Version:           1.0
+ * Author:            ad@min.com
+ * Author URI:        http://premmerce.com
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       helloicms
+ * Domain Path:       /languages
  */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+call_user_func( function () {
+
+	require_once plugin_dir_path( __FILE__ ) . 'autoload.php';
+
+	$main = new helloicmsPlugin( new FileManager( __FILE__ ) );
+
+	register_activation_hook( __FILE__, [ $main, 'activate' ] );
+
+	register_deactivation_hook( __FILE__, [ $main, 'deactivate' ] );
+
+	register_uninstall_hook( __FILE__, [ helloicmsPlugin::class, 'uninstall' ] );
+
+	$main->run();
+} );
