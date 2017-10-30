@@ -1,3 +1,1 @@
-<?php
-
-var_dump($args);
+<textarea name="<?php echo $args['name'] ;?>"><?php echo $args['value'] ;?></textarea>
