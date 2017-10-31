@@ -2,6 +2,7 @@
 
 use helloicms\Admin\Admin;
 use helloicms\Frontend\Frontend;
+use helloicms\Post\Post;
 
 /**
  * Class helloicmsPlugin
@@ -25,7 +26,6 @@ class helloicmsPlugin {
 		$this->fileManager = $fileManager;
 
         add_action('init', [ $this, 'loadTextDomain' ]);
-
 	}
 
 	/**
@@ -37,7 +37,7 @@ class helloicmsPlugin {
 		} else {
 			new Frontend( $this->fileManager );
 		}
-
+        new Post( $this->fileManager );
 	}
 
     /**
@@ -47,7 +47,7 @@ class helloicmsPlugin {
     {
         $name = $this->fileManager->getPluginName();
         load_plugin_textdomain($name, false, $name . '/languages/');
-    }
+    }   
 
 	/**
 	 * Fired when the plugin is activated

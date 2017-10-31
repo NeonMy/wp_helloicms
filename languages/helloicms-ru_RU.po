@@ -1,0 +1,36 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: helloicms\n"
+"POT-Creation-Date: 2017-10-31 21:43+0300\n"
+"PO-Revision-Date: 2017-10-31 21:49+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: Ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: /var/www/wordpress.loc/wp-content/plugins/helloicms\n"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Post/Post.php:29
+msgid "Somethings"
+msgstr "Что-то"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Post/Post.php:30
+msgid "Something"
+msgstr "Что-то"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:94
+msgid "Posts Fields"
+msgstr "Поля для Поста"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:98
+msgid "Description"
+msgstr "Описание"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/views/admin/helloicmsTemplate.php:8
+msgid "Save Settings"
+msgstr "Сохраниеть"
