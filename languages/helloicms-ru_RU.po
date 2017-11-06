@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: helloicms\n"
-"POT-Creation-Date: 2017-10-31 21:43+0300\n"
-"PO-Revision-Date: 2017-10-31 21:49+0300\n"
+"POT-Creation-Date: 2017-11-06 23:53+0300\n"
+"PO-Revision-Date: 2017-11-06 23:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: Ru\n"
@@ -23,13 +23,29 @@ msgstr "Что-то"
 msgid "Something"
 msgstr "Что-то"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:94
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:75
+msgid "My"
+msgstr "Мой"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:76
+msgid "dear"
+msgstr "дорогой"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:77
+msgid "shalom"
+msgstr "Шалом"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:109
 msgid "Posts Fields"
 msgstr "Поля для Поста"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:98
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:113
 msgid "Description"
 msgstr "Описание"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Tax/Tax.php:30
+msgid "Something taxonomy"
+msgstr "Какая-то таксономия"
 
 #: /var/www/wordpress.loc/wp-content/plugins/helloicms/views/admin/helloicmsTemplate.php:8
 msgid "Save Settings"

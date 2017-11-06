@@ -3,6 +3,7 @@
 use helloicms\Admin\Admin;
 use helloicms\Frontend\Frontend;
 use helloicms\Post\Post;
+use helloicms\Tax\Tax;
 
 /**
  * Class helloicmsPlugin
@@ -38,6 +39,7 @@ class helloicmsPlugin {
 			new Frontend( $this->fileManager );
 		}
         new Post( $this->fileManager );
+        new Tax( $this->fileManager );
 	}
 
     /**
