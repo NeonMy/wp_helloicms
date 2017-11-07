@@ -56,12 +56,18 @@ class helloicmsPlugin {
 	 */
 	public function activate() {
 		// TODO: Implement activate() method.
+        
+        flush_rewrite_rules();        
+        
 	}
 
 	/**
 	 * Fired when the plugin is deactivated
 	 */
 	public function deactivate() {
+        
+        flush_rewrite_rules();
+        
 		// TODO: Implement deactivate() method.
 	}
 

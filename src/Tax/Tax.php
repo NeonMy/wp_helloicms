@@ -1,4 +1,6 @@
-<?php namespace helloicms\Tax;
+<?php
+
+namespace helloicms\Tax;
 
 use helloicms\FileManager;
 
@@ -9,30 +11,26 @@ use helloicms\FileManager;
  */
 class Tax {
 
+    /**
+     * @var FileManager
+     */
+    private $fileManager;
 
-	/**
-	 * @var FileManager
-	 */
-	private $fileManager;
+    public function __construct(FileManager $fileManager) {
+        $this->fileManager = $fileManager;
 
-	public function __construct( FileManager $fileManager ) {
-		$this->fileManager = $fileManager;      
-        
-        add_action( 'init', [$this, 'videoPostTaxonomy'] );
-        
-	}
-   
-    public function videoPostTaxonomy() {
-        register_taxonomy(
-            'something_tax',
-            'something',
-            [
-                'label'        => __( 'Something taxonomy', 'helloicms' ),
-                'public'        => TRUE,
-                
-            ]
-        );
+        add_action('init', [$this, 'videoPostTaxonomy']);
     }
 
+    public function videoPostTaxonomy() {
+        register_taxonomy(
+                'something-tax', 'something', [
+                    'label'   => __('Something taxonomy', 'helloicms'),
+                    'rewrite' => ['slug' => 'something-tax'],
+                    'public'  => TRUE,
+                ]
+        );
+        
+    }
 
 }

@@ -63,23 +63,28 @@ class Admin {
         }
         return htmlspecialchars($string, ENT_QUOTES, 'utf-8');
     }
-
-    public function init_settings() {
-        
-        
-        //TODO
-        wp_enqueue_script( 'jquery' );
-        
+    
+    private function jsInit () {
         wp_register_script('shalom_script', $this->fileManager->locateAsset('admin/admin.js'), ['jquery']);
         wp_localize_script('shalom_script', 'data', [
             'w1' => __('My', 'helloicms'),
             'w2' => __('dear', 'helloicms'),
-            'w2' => __('shalom', 'helloicms'),
+            'w3' => __('shalom', 'helloicms'),
         ]);
         wp_enqueue_script( 'shalom_script' );
-        //TODO
         
+    }
+    
+    private function cssInit () {
+//        wp_register_style('shalom_style', $this->fileManager->locateAsset('admin/admin.css'));
+        wp_enqueue_style('shalom_style', $this->fileManager->locateAsset('admin/admin.css'));
+    }
+    
+
+    public function init_settings() {
         
+        self::jsInit();
+        self::cssInit();      
         
         $input = [
             'helloicms_c_box' => $this->encode(get_option('helloicms_c_box')),
