@@ -5,9 +5,9 @@ namespace helloicms\Tax;
 use helloicms\FileManager;
 
 /**
- * Class Post
+ * Class Tax
  *
- * @package helloicms\Post
+ * @package helloicms\Tax
  */
 class Tax {
 

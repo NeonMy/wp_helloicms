@@ -4,6 +4,7 @@ use helloicms\Admin\Admin;
 use helloicms\Frontend\Frontend;
 use helloicms\Post\Post;
 use helloicms\Tax\Tax;
+use helloicms\Meta\Meta;
 
 /**
  * Class helloicmsPlugin
@@ -35,6 +36,7 @@ class helloicmsPlugin {
 	public function run() {
 		if ( is_admin() ) {
 			new Admin( $this->fileManager );
+			new Meta( $this->fileManager );
 		} else {
 			new Frontend( $this->fileManager );
 		}

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: helloicms\n"
-"POT-Creation-Date: 2017-11-06 23:53+0300\n"
-"PO-Revision-Date: 2017-11-06 23:53+0300\n"
+"POT-Creation-Date: 2017-11-19 21:40+0300\n"
+"PO-Revision-Date: 2017-11-19 21:40+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: Ru\n"
@@ -23,30 +23,41 @@ msgstr "Что-то"
 msgid "Something"
 msgstr "Что-то"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:75
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Meta/Meta.php:32
+msgid "Other settings"
+msgstr "Какие-то доп. данные"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Meta/Meta.php:39
+msgid "Other settings side"
+msgstr "Какие-то доп. данные справа"
+
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:70
 msgid "My"
 msgstr "Мой"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:76
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:71
 msgid "dear"
 msgstr "дорогой"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:77
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:72
 msgid "shalom"
 msgstr "Шалом"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:109
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:114
 msgid "Posts Fields"
 msgstr "Поля для Поста"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:113
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Admin/Admin.php:118
 msgid "Description"
 msgstr "Описание"
 
-#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Tax/Tax.php:30
+#: /var/www/wordpress.loc/wp-content/plugins/helloicms/src/Tax/Tax.php:28
 msgid "Something taxonomy"
 msgstr "Какая-то таксономия"
 
 #: /var/www/wordpress.loc/wp-content/plugins/helloicms/views/admin/helloicmsTemplate.php:8
 msgid "Save Settings"
-msgstr "Сохраниеть"
+msgstr "Сохранить"
+
+#~ msgid "Other settings left"
+#~ msgstr "Какие-то доп. данные справа"
