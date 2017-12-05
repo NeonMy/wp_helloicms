@@ -19,13 +19,37 @@ class Short {
     public function __construct(FileManager $fileManager) {
         $this->fileManager = $fileManager;
 
-//        add_action('init', [$this, 'helloicms_short']);
+        add_action('init', [$this, 'helloicms_short']);
     }
 
     public function helloicms_short() {
-        add_shortcode('tagAdd', function($a, $d, $t) {
-            echo "<". $t ." data-attribute='{$a['data']}'>" . $d . "</". $t .">";
+
+        add_shortcode('tagAdd', function($attributes, $body, $t) {
+
+            $a = shortcode_atts(array(
+                'tag' => 'br',
+                'close' => '',
+                    ), $attributes);
+
+            unset($attributes['tag']);
+            unset($attributes['close']);
+            
+            foreach ($attributes as $key => $val) {
+                $attributes[$key] = $key.'="'.$val.'"';
+            }
+            
+            dump($a);
+
+            if ($a['close'] && $body){
+                echo "<" . $a['tag'] . " " . implode(' ', $attributes) . ">" . $body . "</" . $a['tag'] . ">";
+            } else {
+                echo "<" . $a['tag'] . ">";                
+            }
+
         });
+
+
+//        shortcode_exists($tag)
     }
 
 }
