@@ -23,7 +23,7 @@ class Short {
     }
 
     public function helloicms_short() {
-
+        // [tagAdd tag="a" href="/testtest" style="color:red" close="1"]Ссылка куда-то[/tagAdd]
         add_shortcode('tagAdd', function($attributes, $body, $t) {
 
             $a = shortcode_atts(array(
@@ -36,9 +36,7 @@ class Short {
             
             foreach ($attributes as $key => $val) {
                 $attributes[$key] = $key.'="'.$val.'"';
-            }
-            
-            dump($a);
+            }            
 
             if ($a['close'] && $body){
                 echo "<" . $a['tag'] . " " . implode(' ', $attributes) . ">" . $body . "</" . $a['tag'] . ">";
