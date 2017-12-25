@@ -5,6 +5,7 @@ use helloicms\Frontend\Frontend;
 use helloicms\Post\Post;
 use helloicms\Tax\Tax;
 use helloicms\Short\Short;
+use helloicms\Widget\Widget;
 use helloicms\Meta\Meta;
 
 /**
@@ -41,9 +42,14 @@ class helloicmsPlugin {
 		} else {
 			new Frontend( $this->fileManager );
 		}
-            new Tax( $this->fileManager );
-            new Post( $this->fileManager );
-            new Short( $this->fileManager );
+        new Tax( $this->fileManager );
+        new Post( $this->fileManager );
+        new Short( $this->fileManager );        
+        
+        add_action( 'widgets_init', function() {
+            register_widget( new Widget() );
+        });
+        
 	}
 
     /**
